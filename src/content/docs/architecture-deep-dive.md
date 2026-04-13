@@ -1,6 +1,6 @@
 # Architecture Deep Dive
 
-## Key Design Principles
+## Key Design Principles 
 
 **Permissionless Entry**  
 Any operator can register by paying the dynamic TAO burn. No approval process, no guardian whitelist, no DVN gatekeeping. Competition is open.
@@ -12,7 +12,7 @@ Every score dimension uses on-chain or cryptographically verifiable data. Valida
 Relay miners compete on latency and gas estimates before execution. Bid accuracy is scored. The market finds optimal pricing automatically.
 
 **ChainAdapter Interface**  
-New chains can be added without deploying new contracts. Same-ecosystem chains are zero-config additions. New ecosystems need one Python class implementing five methods.
+New chains can be added without deploying new contracts. Same-ecosystem chains are zero-config additions New ecosystems need one Python class implementing five methods.
 
 **One Contract Per Chain**  
 A single Entangle contract handles both source (`sendMessage`) and destination (`verifyMessage`) roles on every supported blockchain.
