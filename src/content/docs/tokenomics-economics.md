@@ -2,7 +2,7 @@
 
 ## The Alpha Token
 
-Alpha is Entangle's subnet token on Bittensor. It is a **work token** (utility token) — not a profit-sharing security. Alpha holders benefit from two demand drivers:
+Alpha is Entangle's subnet token on Bittensor. It is a **work token** (utility token) not a profit-sharing security. Alpha holders benefit from two demand drivers:
 
 1. **TAO emissions:** Bittensor emits TAO to the subnet, which converts to Alpha via the subnet's internal AMM
 2. **Fee buyback:** Protocol fee revenue is used to buy Alpha on the open market (programmatic demand backed by real revenue)
@@ -10,7 +10,7 @@ Alpha is Entangle's subnet token on Bittensor. It is a **work token** (utility t
 ## Revenue Buyback Mechanism
 
 ```
-Step 1  dApp relays a message — $0.08 fee paid in ETH
+Step 1  dApp relays a message $0.08 fee paid in ETH
 Step 2  Relay confirmed → 70% to winning relay miner ($0.056)
 Step 3  30% → Treasury ($0.024 per message)
 Step 4  20% of treasury → TWAP buyback of Alpha via DEX (every 7 days)
@@ -42,7 +42,7 @@ Y3 scale (3M msgs/day):
 
 ## Emission Burn Rate
 
-The protocol can vote to burn a percentage of miner emission before it reaches miners — a deflationary lever:
+The protocol can vote to burn a percentage of miner emission before it reaches miners a deflationary lever:
 
 | Burn Rate | Net Emission/Day | Burned α/Day | When to Use |
 |---|---|---|---|
@@ -96,4 +96,4 @@ NetAlphaSupply = Emission × (1-B) - Buyback_burns
 AlphaEquilibriumP = NetAlphaDemand / NetAlphaSupply
 ```
 
-Most Bittensor subnets rely entirely on TAO emission for miner incentives. If TAO price drops, the entire subnet degrades. Entangle breaks this dependency with a second demand source — protocol fee buybacks in stable USD-denominated value. Relay miners are paid in ETH/BNB/MATIC directly, and Alpha buyback continues in real dollar terms even in a TAO bear market.
+Most Bittensor subnets rely entirely on TAO emission for miner incentives. If TAO price drops, the entire subnet degrades. Entangle breaks this dependency with a second demand source protocol fee buybacks in stable USD-denominated value. Relay miners are paid in ETH/BNB/MATIC directly, and Alpha buyback continues in real dollar terms even in a TAO bear market.

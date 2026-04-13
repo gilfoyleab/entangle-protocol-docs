@@ -21,7 +21,7 @@ Entangle deploys **one contract per supported blockchain**. A single deployment 
 | `setSignatureThreshold(threshold)` | external | Protocol multisig (timelocked) | Sets minimum validator signatures for `verifyMessage()` to pass |
 | `freezeOracle(dst_chain, value)` | external | Protocol multisig | Emergency freeze of gas oracle at a manual value |
 | `withdrawRelayReserve(dst_chain, amount)` | external | Protocol multisig | Withdraws accumulated relay reserve |
-| `getTotalFee(dst_chain)` | view | Anyone | Returns current total fee — helper for dApp UIs |
+| `getTotalFee(dst_chain)` | view | Anyone | Returns current total fee helper for dApp UIs |
 | `getSeqNo(src_addr, dst_chain)` | view | Anyone | Returns next sequence number for a sender/destination pair |
 
 ## Contract Events
@@ -59,7 +59,7 @@ require(msg.value >= platform_base_fee[dst_chain] + gas_reserve[dst_chain])
 
 If the gas oracle hasn't updated recently and gas prices spike above the reserve, `sendMessage()` reverts with `InsufficientReserve` until the oracle catches up. dApps should call `getTotalFee(dst_chain)` before presenting a relay UI to users.
 
-## Cross-Chain Replay Protection — 4-Tuple Dedup Key
+## Cross-Chain Replay Protection 4-Tuple Dedup Key
 
 To prevent a message intended for one destination from being executed on another, all dedup keys use a 4-tuple:
 

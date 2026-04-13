@@ -36,19 +36,23 @@ export function DocNavbar({ onMenuToggle }: DocNavbarProps) {
             <Menu className="w-5 h-5 text-muted-foreground" />
           </button>
 
-          <Link to="/docs/introduction" className="flex items-center gap-2.5 group">
-            <img
-              src="/entangle-logo.png"
-              alt="Entangle Logo"
-              className="w-6 h-6 brightness-200 grayscale transition-all"
-            />
-            <span className="font-semibold text-[15px] tracking-tight">
-              Entangle Docs
-            </span>
-            <span className="hidden sm:inline text-xs text-muted-foreground font-medium px-1.5 py-0.5 rounded bg-secondary">
-              v2.0
-            </span>
-          </Link>
+          <div className="flex items-center gap-2.5">
+            <a href="https://entangle-eight.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/entangle-logo.png"
+                alt="Entangle Logo"
+                className="w-6 h-6 brightness-200 grayscale transition-all hover:brightness-100 hover:scale-105"
+              />
+            </a>
+            <Link to="/docs/introduction" className="flex items-center gap-2.5">
+              <span className="font-semibold text-[15px] tracking-tight">
+                Entangle Docs
+              </span>
+              <span className="hidden sm:inline text-xs text-muted-foreground font-medium px-1.5 py-0.5 rounded bg-secondary">
+                v2.0
+              </span>
+            </Link>
+          </div>
         </div>
 
         {/* Center Column: Search Bar */}
@@ -79,7 +83,7 @@ export function DocNavbar({ onMenuToggle }: DocNavbarProps) {
 
           <div className="hidden md:flex items-center gap-1">
             <a
-              href="/entangle-whitepaper.pdf"
+              href="/final_whitepaper.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors"
@@ -89,9 +93,7 @@ export function DocNavbar({ onMenuToggle }: DocNavbarProps) {
             </a>
 
             <a
-              href="https://github.com/entanglefi"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
               className="p-2 rounded-md hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
               aria-label="GitHub"
             >

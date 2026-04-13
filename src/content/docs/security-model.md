@@ -2,7 +2,7 @@
 
 ## Threshold Attestation
 
-All message delivery is gated by a **threshold signature bundle** — validators must collectively attest to a message before it can be executed on the destination chain. Compromising the attestation requires controlling >60% of registered validator stake — the same threshold needed to corrupt Bittensor consensus itself.
+All message delivery is gated by a **threshold signature bundle** validators must collectively attest to a message before it can be executed on the destination chain. Compromising the attestation requires controlling >60% of registered validator stake the same threshold needed to corrupt Bittensor consensus itself.
 
 **EVM (Solidity):**
 ```solidity
@@ -17,7 +17,7 @@ function executeMessage(
     bytes32 key = _execKey(src_chain, DST_CHAIN_NAME, seq_no);
     require(!_executed[key], 'AlreadyExecuted');
 
-    // 2. Verify attestation bundle — BEFORE any state change
+    // 2. Verify attestation bundle BEFORE any state change
     bytes32 payload_hash = keccak256(payload);
     uint128 attestedStake = 0;
     for (uint i = 0; i < bundle.validator_uids.length; i++) {
@@ -33,7 +33,7 @@ function executeMessage(
     uint128 required = totalRegisteredStake * THRESHOLD_PERCENT / 100;
     require(attestedStake >= required, 'BelowStakeThreshold');
 
-    // 3. Mark executed and run payload — AFTER threshold verified
+    // 3. Mark executed and run payload AFTER threshold verified
     _executed[key] = true;
     emit MessageExecuted(seq_no, msg.sender, dst_recipient);
     (bool ok,) = dst_recipient.call{gas:100_000}(payload);

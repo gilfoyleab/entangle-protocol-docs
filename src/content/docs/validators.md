@@ -1,6 +1,6 @@
 # Validators
 
-Validators are the orchestration layer. They do not run chain-scanning infrastructure themselves — they outsource scanning to scanner miners and verify results.
+Validators are the orchestration layer. They do not run chain-scanning infrastructure themselves they outsource scanning to scanner miners and verify results.
 
 ## Validator Responsibilities
 
@@ -34,11 +34,11 @@ Background:         HealthCheckSynapse every 600s to up to 20 miners
 Validators maintain separate attestation keys for each destination chain ecosystem:
 
 ```bash
-ENTANGLE_ATTEST_KEY_EVM=0xPRIVKEY       # secp256k1 — all EVM chains
-ENTANGLE_ATTEST_KEY_SOLANA=BASE58        # ed25519 — Solana
-ENTANGLE_ATTEST_KEY_SUI=BASE58           # ed25519 — SUI
-ENTANGLE_ATTEST_KEY_COSMOS=0x...         # secp256k1 — Cosmos chains
-ENTANGLE_ATTEST_KEY_STELLAR=BASE58       # ed25519 — Stellar
+ENTANGLE_ATTEST_KEY_EVM=0xPRIVKEY       # secp256k1 all EVM chains
+ENTANGLE_ATTEST_KEY_SOLANA=BASE58        # ed25519 Solana
+ENTANGLE_ATTEST_KEY_SUI=BASE58           # ed25519 SUI
+ENTANGLE_ATTEST_KEY_COSMOS=0x...         # secp256k1 Cosmos chains
+ENTANGLE_ATTEST_KEY_STELLAR=BASE58       # ed25519 Stellar
 ```
 
 Keys are loaded into memory at startup and never written to disk. Use an HSM or encrypted secrets manager (AWS Secrets Manager, HashiCorp Vault).

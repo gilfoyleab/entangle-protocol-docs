@@ -2,7 +2,7 @@
 
 Entangle Protocol is a **Bittensor subnet** that provides fully decentralised cross-chain message relaying across 13 blockchain networks and 5 distinct ecosystems. It connects EVM chains (Ethereum, Arbitrum, Optimism, Base, Polygon, BNB Chain, Avalanche), Solana, SUI, Stellar, and Cosmos chains (Cosmos Hub, Osmosis, Neutron) using a competitive, incentivised relay network.
 
-**No bridges. No custodians. No single point of failure.** Just a decentralised network of incentivised agentic relayers — scored and rewarded by Bittensor's Yuma Consensus.
+**No bridges. No custodians. No single point of failure.** Just a decentralised network of incentivised agentic relayers scored and rewarded by Bittensor's Yuma Consensus.
 
 ## What makes Entangle different
 

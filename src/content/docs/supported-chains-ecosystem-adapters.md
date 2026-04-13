@@ -37,7 +37,7 @@ FINALITY_BLOCKS: dict[str, int] = {
 
 ## ChainAdapter Interface
 
-All adapters implement the same abstract interface — the only component containing ecosystem-specific code:
+All adapters implement the same abstract interface the only component containing ecosystem-specific code:
 
 ```python
 class ChainAdapter(ABC):
@@ -65,8 +65,8 @@ class ChainAdapter(ABC):
 
 **Ecosystem-specific implementations:**
 
-- **EVMAdapter** — handles all 7 EVM chains via web3.py. PoA chains (Polygon, BNB) get `ExtraDataToPOAMiddleware` injected automatically.
-- **SolanaAdapter** — uses solana-py and the Anchor IDL. Parses base64-encoded Anchor events using discriminators.
-- **SUIAdapter** — uses SUI JSON-RPC API via aiohttp. Object-centric execution via programmable transaction blocks.
-- **StellarAdapter** — split architecture: base ledger via Horizon REST API, smart contracts via Soroban RPC.
-- **CosmosAdapter** — uses Cosmos REST API (Stargate) and CosmWasm execution. Handles per-chain denom differences.
+- **EVMAdapter** handles all 7 EVM chains via web3.py. PoA chains (Polygon, BNB) get `ExtraDataToPOAMiddleware` injected automatically.
+- **SolanaAdapter** uses solana-py and the Anchor IDL. Parses base64-encoded Anchor events using discriminators.
+- **SUIAdapter** uses SUI JSON-RPC API via aiohttp. Object-centric execution via programmable transaction blocks.
+- **StellarAdapter** split architecture: base ledger via Horizon REST API, smart contracts via Soroban RPC.
+- **CosmosAdapter** uses Cosmos REST API (Stargate) and CosmWasm execution. Handles per-chain denom differences.

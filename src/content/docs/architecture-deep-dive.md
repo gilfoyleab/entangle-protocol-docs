@@ -67,11 +67,11 @@ Returned by the miner as evidence of delivery:
 | 408 | `TIMEOUT` | Message not confirmed before deadline |
 | 501 | `UNSUPPORTED_CHAIN` | Miner doesn't support this chain pair |
 | 422 | `INVALID_PROOF` | Miner couldn't build a valid proof |
-| 429 | `RATE_LIMITED` | Miner is at capacity — task shed |
+| 429 | `RATE_LIMITED` | Miner is at capacity task shed |
 
 ## Deterministic Task IDs
 
-Task IDs are computed deterministically so all validators assign the same ID to the same message — critical for cross-validator score consistency:
+Task IDs are computed deterministically so all validators assign the same ID to the same message critical for cross-validator score consistency:
 
 ```python
 task_id = sha256(
@@ -84,45 +84,39 @@ task_id = sha256(
 
 **Per Validator Node:**
 ```
-┌────────────────────────────────────────────────────────────┐
-│  validator-process (Python)                                │
-│    ├─ BittensorClient (metagraph, axon, dendrite)          │
-│    ├─ ChainAdapterRegistry (one adapter per chain)         │
-│    ├─ SynapseHandlers (ChainScan, HealthCheck, Attest)     │
-│    ├─ AuctionEngine (BidRequest, winner selection)         │
-│    ├─ ExecutionMonitor (proof verification, scoring)       │
-│    ├─ OracleSubmitter (gas price updates)                  │
-│    └─ WeightCommitter (set_weights every epoch)            │
-│                                                            │
-│  HSM / Secrets Manager (external)                         │
-│    └─ Attestation keys per dst_chain ecosystem            │
-└────────────────────────────────────────────────────────────┘
+validator-process (Python)
+  +-- BittensorClient (metagraph, axon, dendrite)
+  +-- ChainAdapterRegistry (one adapter per chain)
+  +-- SynapseHandlers (ChainScan, HealthCheck, Attest)
+  +-- AuctionEngine (BidRequest, winner selection)
+  +-- ExecutionMonitor (proof verification, scoring)
+  +-- OracleSubmitter (gas price updates)
+  +-- WeightCommitter (set_weights every epoch)
+
+HSM / Secrets Manager (external)
+  +-- Attestation keys per dst_chain ecosystem
 ```
 
 **Per Scanner Miner Node:**
 ```
-┌────────────────────────────────────────────────────────────┐
-│  scanner-process (Python)                                  │
-│    ├─ BittensorClient (axon — serves ChainScanSynapse)     │
-│    ├─ ChainAdapterRegistry (source chain adapters only)    │
-│    └─ SynapseHandlers (ChainScan, HealthCheck)             │
-│                                                            │
-│  RPC Infrastructure:                                       │
-│    ├─ Private dedicated RPC (primary) — per chain         │
-│    └─ Public backup RPC — per chain                       │
-└────────────────────────────────────────────────────────────┘
+scanner-process (Python)
+  +-- BittensorClient (axon serves ChainScanSynapse)
+  +-- ChainAdapterRegistry (source chain adapters only)
+  +-- SynapseHandlers (ChainScan, HealthCheck)
+
+RPC Infrastructure:
+  +-- Private dedicated RPC (primary) per chain
+  +-- Public backup RPC per chain
 ```
 
 **Per Relay Miner Node:**
 ```
-┌────────────────────────────────────────────────────────────┐
-│  relay-process (Python)                                    │
-│    ├─ BittensorClient (axon — serves BidRequest, Execute)  │
-│    ├─ ChainAdapterRegistry (destination chain adapters)    │
-│    ├─ WalletManager (keys + balances per dst_chain)        │
-│    └─ SynapseHandlers (BidRequest, Execute, Standby)       │
-│                                                            │
-│  Hot Wallets:                                              │
-│    └─ Funded address per supported destination chain      │
-└────────────────────────────────────────────────────────────┘
+relay-process (Python)
+  +-- BittensorClient (axon serves BidRequest, Execute)
+  +-- ChainAdapterRegistry (destination chain adapters)
+  +-- WalletManager (keys + balances per dst_chain)
+  +-- SynapseHandlers (BidRequest, Execute, Standby)
+
+Hot Wallets:
+  +-- Funded address per supported destination chain
 ```

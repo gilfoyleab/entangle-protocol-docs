@@ -52,7 +52,7 @@ For each chain you support:
 # RPC endpoint
 ENTANGLE_PROTOCOL_RPC_ETHEREUM=https://eth.llamarpc.com
 
-# Private key (relay execution wallet — must be funded)
+# Private key (relay execution wallet must be funded)
 ENTANGLE_PROTOCOL_KEY_ETHEREUM=0x<private_key_hex>
 
 # Entangle ProtocolHub contract address

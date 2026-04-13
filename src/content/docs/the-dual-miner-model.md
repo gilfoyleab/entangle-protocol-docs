@@ -13,7 +13,7 @@ Scanner miners are the event detection layer. They monitor source chain contract
 
 **How scoring works:**
 
-When a validator broadcasts a `ChainScanSynapse`, scanner miners race to respond with the event data. The validator records its own receipt timestamp — miners never self-report timing. Rank-based scoring is applied:
+When a validator broadcasts a `ChainScanSynapse`, scanner miners race to respond with the event data. The validator records its own receipt timestamp miners never self-report timing. Rank-based scoring is applied:
 
 | Detection Rank | Score |
 |---|---|
@@ -29,7 +29,7 @@ When a validator broadcasts a `ChainScanSynapse`, scanner miners race to respond
 - No funded wallets required (read-only operation)
 - Low-bandwidth, read-heavy server infrastructure
 
-**Economics:** Scanner miners receive 30% of subnet TAO emissions. Low capital requirements make this role accessible to a broad population — intentionally, since the Discovery mechanism benefits from many independent, geographically diverse monitors.
+**Economics:** Scanner miners receive 30% of subnet TAO emissions. Low capital requirements make this role accessible to a broad population intentionally, since the Discovery mechanism benefits from many independent, geographically diverse monitors.
 
 ## Relay Miners
 
@@ -41,21 +41,21 @@ When validators have a verified `MessageDispatched` event, they open a sealed-bi
 
 ```
 Validator broadcasts BidRequest
-        │
-        ├── Relay miners submit bids: { estimated_latency_ms, gas_estimate_usd }
-        │
-        ├── Validator selects winner (lowest combined score of latency + gas × weight)
-        │
-        ├── Winner executes relay transaction
-        │
-        └── Validator scores execution and updates Bittensor weights
+         |
+         +-- Relay miners submit bids: { estimated_latency_ms, gas_estimate_usd }
+         |
+         +-- Validator selects winner (lowest combined score of latency + gas x weight)
+         |
+         +-- Winner executes relay transaction
+         |
+         +-- Validator scores execution and updates Bittensor weights
 ```
 
 **Relay execution flow:**
 
-1. Dedup check — if `(src_chain, seq_no, dst_chain)` already in-flight, return cached result
-2. Pre-flight checks — verify chain support, relay key, and deadline
-3. Mark in-flight — insert entry before execution
+1. Dedup check if `(src_chain, seq_no, dst_chain)` already in-flight, return cached result
+2. Pre-flight checks verify chain support, relay key, and deadline
+3. Mark in-flight insert entry before execution
 4. Build `PendingMessage` from relay task
 5. Execute `adapter.relay_message()` under concurrency semaphore (default: 12 parallel)
 6. Map result → `RelayStatus` code
@@ -68,6 +68,6 @@ Validator broadcasts BidRequest
 
 A single Bittensor UID can register both roles by declaring `roles: ["scanner", "relay"]` in `HealthCheckSynapse`. This miner participates in both mechanisms and is scored independently on each.
 
-The key advantage: a combined miner that detects an event via its scanner function can pre-position its relay function before the `BidRequest` arrives — a meaningful latency advantage in competitive rounds.
+The key advantage: a combined miner that detects an event via its scanner function can pre-position its relay function before the `BidRequest` arrives a meaningful latency advantage in competitive rounds.
 
 > **Note:** Running both roles on a single node adds operational complexity. Scanner and relay functions have different resource profiles and failure modes. Experienced operators may prefer separate UIDs.

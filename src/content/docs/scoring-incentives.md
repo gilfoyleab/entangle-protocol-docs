@@ -11,7 +11,7 @@ where events i = all unique (chain_id, seq_no) events in the scoring window
 and discovery_score_i ∈ {0.00, 0.20, 0.50, 0.70, 1.00}
 ```
 
-Miners monitoring more chains observe more events and can score on more of them — incentivising broad chain coverage.
+Miners monitoring more chains observe more events and can score on more of them incentivising broad chain coverage.
 
 ## Execution Score (Relay Miners)
 
@@ -52,11 +52,11 @@ The 30/70 Discovery/Relay emission split is a Bittensor subnet hyperparameter co
 
 **Self-reporting manipulation prevented:** Scanner miner speed rankings use the validator's own receipt timestamp. Miners never submit a timestamp field. The only way to rank higher is to genuinely respond faster.
 
-**Proof fabrication prevented (three-layer correctness check):**
-- Layer 1 — Attestation consistency (local): Did the miner include the validator's attestation, unmodified?
-- Layer 2 — Destination chain event query (multi-RPC quorum): Did the relay actually land on-chain?
-- Layer 3 — Asymmetric fallback: If quorum fails, liveness probe determines whether it's validator infra failure (→ 0.5 neutral) or miner fabrication (→ 0.0)
+**Proof fabrication prevented (three layer correctness check):**
+- Layer 1 Attestation consistency (local): Did the miner include the validator's attestation, unmodified?
+- Layer 2 Destination chain event query (multi-RPC quorum): Did the relay actually land on-chain?
+- Layer 3 Asymmetric fallback: If quorum fails, liveness probe determines whether it's validator infra failure (→ 0.5 neutral) or miner fabrication (→ 0.0)
 
-**ALREADY_RELAYED farming prevented:** Partial credit for ALREADY_RELAYED (208) requires the miner to provide raw signed transaction bytes as proof of genuine attempt. Without this: 0.0.
+**ALREADY RELAYED farming prevented:** Partial credit for ALREADY_RELAYED (208) requires the miner to provide raw signed transaction bytes as proof of genuine attempt. Without this: 0.0.
 
-**Fee self-reporting eliminated:** `fee_paid_usd` is derived entirely from on-chain receipts via Chainlink/Pyth price oracles. Miner-reported values are ignored for scoring.
+**Fee self reporting eliminated:** `fee_paid_usd` is derived entirely from on-chain receipts via Chainlink/Pyth price oracles. Miner-reported values are ignored for scoring.

@@ -6,13 +6,13 @@
 | **Bittensor** | Decentralised AI network providing the incentive and consensus layer for Entangle |
 | **ChainAdapter** | A Python class implementing chain-specific logic for one blockchain ecosystem |
 | **ChainScanSynapse** | The synapse type sent by validators to scanner miners to request event detection |
-| **Discovery Mechanism** | Mechanism 1 — 30% emission, runs scanner miner scoring |
+| **Discovery Mechanism** | Mechanism 1 30% emission, runs scanner miner scoring |
 | **HealthCheckSynapse** | Fast liveness probe sent by validators every ~10 minutes to all miners |
 | **Metagraph** | Bittensor's on-chain registry of subnet participants and their weights |
 | **MessageDispatched** | The on-chain event emitted by the Entangle contract when a dApp sends a message |
 | **MessageEnvelope** | Chain-agnostic canonical data structure describing a pending cross-chain message |
 | **ProofBundle** | Cryptographic evidence of delivery returned by a relay miner |
-| **Relay Mechanism** | Mechanism 2 — 70% emission, runs relay miner scoring |
+| **Relay Mechanism** | Mechanism 2 70% emission, runs relay miner scoring |
 | **RelayTask** | The primary synapse type carrying message context from validator to miner |
 | **Scanner Miner** | Miner role that monitors source chains for MessageDispatched events (Mechanism 1) |
 | **Relay Miner** | Miner role that executes message delivery to destination chains (Mechanism 2) |

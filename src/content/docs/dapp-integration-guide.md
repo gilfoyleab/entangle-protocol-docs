@@ -2,7 +2,7 @@
 
 ## How Delivery Works
 
-When a relay miner wins an auction for a cross-chain message, it calls `receiveEntangleMessage()` on the **destination dApp contract** — not the Entangle contract. The dApp owns this function and implements its own application logic inside it.
+When a relay miner wins an auction for a cross-chain message, it calls `receiveEntangleMessage()` on the **destination dApp contract** not the Entangle contract. The dApp owns this function and implements its own application logic inside it.
 
 ```
 Relay miner
@@ -80,7 +80,7 @@ contract MyDApp {
 
 **Step 3: Query the current fee before sending**
 
-Always call `getTotalFee(dst_chain)` before presenting a send UI — fees change with the gas oracle:
+Always call `getTotalFee(dst_chain)` before presenting a send UI fees change with the gas oracle:
 
 ```javascript
 const fee = await entangle.getTotalFee("arbitrum");
